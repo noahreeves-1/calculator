@@ -75,15 +75,9 @@ buttons.forEach((button) => {
     button.addEventListener('click', e => {
         switch (button) {
             case one:
-                if (previousValue === 0) {
-                    display.textContent = parseInt(display.textContent + "1");
-                    displayValue = display.textContent;
-                    console.log('displayValue: ' + displayValue);
-                } else {
-                    display.textContent = parseInt(displayValue + "1");
-                    displayValue = display.textContent;
-                    console.log('displayValue: ' + displayValue);
-                }
+                display.textContent = parseInt(displayValue + "1");
+                displayValue = display.textContent;
+                console.log('displayValue: ' + displayValue);
                 break;
             case two:
                 two.addEventListener('click', e => {
