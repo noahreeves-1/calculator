@@ -33,19 +33,24 @@ const divide = function (a, b) {
 console.log(divide(100, 2)) // should return 50
 
 // EQUALS / OPERATE (=) function
-const equals = function (operator, previousValue, currentValue) {
+const equals = function (operator, previousValue, displayValue) {
     switch (operator) {
         case "+":
-            return parseInt(previousValue) + parseInt(currentValue);
+            return Math.round((parseInt(previousValue) + parseInt(displayValue)) * 100) / 100;
             break;
         case "-":
-            return parseInt(previousValue) - parseInt(currentValue);
+            return Math.round((parseInt(previousValue) - parseInt(displayValue)) * 100) / 100;
             break;
         case "*":
-            return parseInt(previousValue) * parseInt(currentValue);
+            return Math.round((parseInt(previousValue) * parseInt(displayValue)) * 100) / 100;
             break;
         case "/":
-            return parseInt(previousValue) / parseInt(currentValue);
+            if (displayValue == 0) {
+                alert('Fool!');
+                return 'NaN'; // what should I return?
+            } else {
+                return Math.round((parseInt(previousValue) / parseInt(displayValue)) * 100) / 100;
+            }
             break;
         case "=":
             return previousValue;
@@ -68,13 +73,13 @@ const eight = document.querySelector('.eight');
 const nine = document.querySelector('.nine');
 const zero = document.querySelector('.zero');
 
+// create variables for operators and clear buttons
 const addButton = document.querySelector('.add');
 const subtractButton = document.querySelector('.subtract');
 const multiplyButton = document.querySelector('.multiply');
 const divideButton = document.querySelector('.divide');
-
-const clearButton = document.querySelector('.clear');
 const equalsButton = document.querySelector('.equals');
+const clearButton = document.querySelector('.clear');
 
 buttons.forEach((button) => {
     button.addEventListener('click', e => {
@@ -120,8 +125,8 @@ buttons.forEach((button) => {
                 displayValue = display.textContent;
                 break;
             case addButton:
-                operator = "+";
                 if (!previousValue) {
+                    operator = "+";
                     displayValue = display.textContent;
                     previousValue = displayValue;
                     displayValue = 0;
@@ -130,27 +135,70 @@ buttons.forEach((button) => {
                     currentValue = equals(operator, previousValue, displayValue);
                     display.textContent = currentValue;
                     previousValue = currentValue;
+                    operator = "+";
                     currentValue = 0;
                     displayValue = 0;
-                }
+                };
+                console.log('previousValue: ' + previousValue);
+                console.log('displayValue: ' + displayValue);
+                console.log('currentValue: ' + currentValue);
                 break;
             case subtractButton:
-                operator = "-";
-                previousValue = displayValue;
-                displayValue = 0;
-                display.textContent = 0;
+                if (!previousValue) {
+                    operator = "-";
+                    displayValue = display.textContent;
+                    previousValue = displayValue;
+                    displayValue = 0;
+                } else {
+                    displayValue = display.textContent;
+                    currentValue = equals(operator, previousValue, displayValue);
+                    display.textContent = currentValue;
+                    previousValue = currentValue;
+                    operator = "-";
+                    currentValue = 0;
+                    displayValue = 0;
+                };
+                console.log('previousValue: ' + previousValue);
+                console.log('displayValue: ' + displayValue);
+                console.log('currentValue: ' + currentValue);
                 break;
             case multiplyButton:
-                operator = "*";
-                previousValue = displayValue;
-                displayValue = 0;
-                display.textContent = 0;
+                if (!previousValue) {
+                    operator = "*";
+                    displayValue = display.textContent;
+                    previousValue = displayValue;
+                    displayValue = 0;
+                } else {
+                    displayValue = display.textContent;
+                    currentValue = equals(operator, previousValue, displayValue);
+                    display.textContent = currentValue;
+                    previousValue = currentValue;
+                    operator = "*";
+                    currentValue = 0;
+                    displayValue = 0;
+                };
+                console.log('previousValue: ' + previousValue);
+                console.log('displayValue: ' + displayValue);
+                console.log('currentValue: ' + currentValue);
                 break;
             case divideButton:
-                operator = "/";
-                previousValue = displayValue;
-                displayValue = 0;
-                display.textContent = 0;
+                if (!previousValue) {
+                    operator = "/";
+                    displayValue = display.textContent;
+                    previousValue = displayValue;
+                    displayValue = 0;
+                } else {
+                    displayValue = display.textContent;
+                    currentValue = equals(operator, previousValue, displayValue);
+                    display.textContent = currentValue;
+                    previousValue = currentValue;
+                    operator = "/";
+                    currentValue = 0;
+                    displayValue = 0;
+                };
+                console.log('previousValue: ' + previousValue);
+                console.log('displayValue: ' + displayValue);
+                console.log('currentValue: ' + currentValue);
                 break;
             case equalsButton:
                 if (!operator) {
@@ -177,6 +225,7 @@ buttons.forEach((button) => {
                 displayValue = 0;
                 previousValue = 0;
                 currentValue = 0;
+                operator = '';
                 break;
             default:
                 console.log('button press did not work');
