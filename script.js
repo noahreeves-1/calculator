@@ -154,7 +154,7 @@ buttons.forEach((button) => {
                 break;
             case equalsButton:
                 if (!operator) {
-                    alert('Make sure you click an operator first!');
+                    return;
                 } else {
                     displayValue = display.textContent;
                     currentValue = equals(operator, previousValue, displayValue);
@@ -164,7 +164,7 @@ buttons.forEach((button) => {
                     previousValue = 0;
                     currentValue = 0;
                     displayValue = 0;
-                    operator = '=';
+                    operator = '';
 
                     // console log to see what's going on
                     console.log('previousValue: ' + previousValue);
