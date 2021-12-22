@@ -1,0 +1,160 @@
+/*
+This adds the calculator font that I want... I had to save it locally to the same Calculator
+directory to make this work.
+*/
+@font-face {
+    font-family: 'digital-7';
+    src: url('../transfonter-digital-7/Digital-7.eot'); /* IE9 Compat Modes */
+    src: url('../transfonter-digital-7/Digital-7.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../transfonter-digital-7/Digital-7.woff') format('woff'), /* Modern Browsers */
+         url('../transfonter-digital-7/Digital-7.woff2') format('woff2'), /* Modern Browsers */
+         url('../transfonter-digital-7/Digital-7.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../transfonter-digital-7/Digital-7.svg') format('svg'); /* Legacy iOS */
+}
+
+.body {
+    width: 400px;
+    margin: 100px auto;
+}
+
+.calculator-body {
+    background-color: royalblue;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+}
+
+.display {
+    width: 75%;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    background-color: lightgray;
+    padding: 10px;
+    border-style: solid;
+    border-color: slategrey;
+    font-family: 'digital-7';
+    font-size: 40px;
+}
+
+.company {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 38px;
+    margin-top: 10px;
+    font-family: 'Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif';
+    color: white;
+}
+
+.model {
+    display: inline;
+    margin-left: 30px;
+    color: white;
+    font-family: 'Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif';
+    font-size: 38px;
+    font-weight: 900;
+}
+
+.solar {
+    width: 110px;
+    display: flex;
+    margin-left: 38px;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(48, 54, 59);
+}
+
+.panel {
+    height: 30px;
+    background-color: rgb(79, 91, 104);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(48, 54, 59);
+    display: flex;
+    flex-grow: 1;
+}
+
+.button-section {
+    display: flex;
+}
+
+.number-section {
+    width: 250px;
+    margin-left: 38px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.operator-section {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+}
+
+.button {
+    width: 80px;
+    height: 50px;
+    font-size: 20px;    
+}
+
+/*
+THIS SECTION IS SPECIFICALLY FOR EACH OPERATOR BUTTON
+*/
+.delete-button {
+    display: inline-block;
+    margin-left: 38px;
+    width: 160px;
+    height: 50px;
+    font-size: 16px;
+    background-color: rgb(177, 177, 177);
+}
+
+.clear {
+    display: inline-block;
+    background-color:rgb(231, 71, 71);
+    margin-left: 86px;
+    margin-bottom: 10px;
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16px;
+}
+
+.divide {
+    background-color:rgb(231, 71, 71);
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
+.multiply {
+    background-color:rgb(231, 71, 71);
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
+.subtract {
+    background-color:rgb(231, 71, 71);
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
+.add {
+    background-color:rgb(231, 71, 71);
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
+.equals {
+    /* background-color:rgb(179, 182, 194); */
+    background-color:rgb(231, 71, 71);
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}

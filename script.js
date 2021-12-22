@@ -36,20 +36,20 @@ console.log(divide(100, 2)) // should return 50
 const equals = function (operator, previousValue, displayValue) {
     switch (operator) {
         case "+":
-            return Math.round((parseInt(previousValue) + parseInt(displayValue)) * 100) / 100;
+            return Math.round((parseFloat(previousValue) + parseFloat(displayValue)) * 100000000) / 100000000;
             break;
         case "-":
-            return Math.round((parseInt(previousValue) - parseInt(displayValue)) * 100) / 100;
+            return Math.round((parseFloat(previousValue) - parseFloat(displayValue)) * 100000000) / 100000000;
             break;
         case "*":
-            return Math.round((parseInt(previousValue) * parseInt(displayValue)) * 100) / 100;
+            return Math.round((parseFloat(previousValue) * parseFloat(displayValue)) * 100000000) / 100000000;
             break;
         case "/":
             if (displayValue == 0) {
                 alert('Fool!');
-                return 'NaN'; // what should I return?
+                return 'Error'; // what should I return?
             } else {
-                return Math.round((parseInt(previousValue) / parseInt(displayValue)) * 100) / 100;
+                return Math.round((parseFloat(previousValue) / parseFloat(displayValue)) * 100000000) / 100000000;
             }
             break;
         case "=":
@@ -73,55 +73,57 @@ const eight = document.querySelector('.eight');
 const nine = document.querySelector('.nine');
 const zero = document.querySelector('.zero');
 
-// create variables for operators and clear buttons
+// create variables for operators, clear, and decimal buttons
 const addButton = document.querySelector('.add');
 const subtractButton = document.querySelector('.subtract');
 const multiplyButton = document.querySelector('.multiply');
 const divideButton = document.querySelector('.divide');
 const equalsButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear');
+const decimal = document.querySelector('.decimal');
+const deleteButton = document.querySelector('.delete-button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', e => {
         switch (button) {
             case one:
-                display.textContent = parseInt(displayValue + "1");
+                display.textContent = parseFloat(displayValue + "1");
                 displayValue = display.textContent;
                 break;
             case two:
-                display.textContent = parseInt(displayValue + "2");
+                display.textContent = parseFloat(displayValue + "2");
                 displayValue = display.textContent;
                 break;
             case three:
-                display.textContent = parseInt(displayValue + "3");
+                display.textContent = parseFloat(displayValue + "3");
                 displayValue = display.textContent;
                 break;
             case four:
-                display.textContent = parseInt(displayValue + "4");
+                display.textContent = parseFloat(displayValue + "4");
                 displayValue = display.textContent;
                 break;
             case five:
-                display.textContent = parseInt(displayValue + "5");
+                display.textContent = parseFloat(displayValue + "5");
                 displayValue = display.textContent;
                 break;
             case six:
-                display.textContent = parseInt(displayValue + "6");
+                display.textContent = parseFloat(displayValue + "6");
                 displayValue = display.textContent;
                 break;
             case seven:
-                display.textContent = parseInt(displayValue + "7");
+                display.textContent = parseFloat(displayValue + "7");
                 displayValue = display.textContent;
                 break;
             case eight:
-                display.textContent = parseInt(displayValue + "8");
+                display.textContent = parseFloat(displayValue + "8");
                 displayValue = display.textContent;
                 break;
             case nine:
-                display.textContent = parseInt(displayValue + "9");
+                display.textContent = parseFloat(displayValue + "9");
                 displayValue = display.textContent;
                 break;
             case zero:
-                display.textContent = parseInt(displayValue + "0");
+                display.textContent = parseFloat(displayValue + "0");
                 displayValue = display.textContent;
                 break;
             case addButton:
@@ -219,6 +221,13 @@ buttons.forEach((button) => {
                     console.log('displayValue: ' + displayValue);
                     console.log('currentValue: ' + currentValue);
                 }
+                break;
+            case decimal:
+                display.textContent = display.textContent + '.';
+                displayValue = display.textContent;
+                break;
+            case deleteButton:
+                console.log('delete button pressed');
                 break;
             case clearButton:
                 display.textContent = 0;
