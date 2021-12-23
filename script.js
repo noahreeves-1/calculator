@@ -83,6 +83,7 @@ const clearButton = document.querySelector('.clear');
 const decimal = document.querySelector('.decimal');
 const deleteButton = document.querySelector('.delete-button');
 
+// clicks
 buttons.forEach((button) => {
     button.addEventListener('click', e => {
         switch (button) {
@@ -227,7 +228,8 @@ buttons.forEach((button) => {
                 displayValue = display.textContent;
                 break;
             case deleteButton:
-                console.log('delete button pressed');
+                displayValue = display.textContent.slice(0, display.textContent.length - 1);
+                display.textContent = displayValue;
                 break;
             case clearButton:
                 display.textContent = 0;
@@ -240,4 +242,164 @@ buttons.forEach((button) => {
                 console.log('button press did not work');
         }
     })
+});
+
+// keyboard support
+window.addEventListener('keydown', e => {
+    console.log(e.key);
+    switch (e.key) {
+        case "1":
+            display.textContent = parseFloat(displayValue + "1");
+            displayValue = display.textContent;
+            break;
+        case "2":
+            display.textContent = parseFloat(displayValue + "2");
+            displayValue = display.textContent;
+            break;
+        case "3":
+            display.textContent = parseFloat(displayValue + "3");
+            displayValue = display.textContent;
+            break;
+        case "4":
+            display.textContent = parseFloat(displayValue + "4");
+            displayValue = display.textContent;
+            break;
+        case "5":
+            display.textContent = parseFloat(displayValue + "5");
+            displayValue = display.textContent;
+            break;
+        case "6":
+            display.textContent = parseFloat(displayValue + "6");
+            displayValue = display.textContent;
+            break;
+        case "7":
+            display.textContent = parseFloat(displayValue + "7");
+            displayValue = display.textContent;
+            break;
+        case "8":
+            display.textContent = parseFloat(displayValue + "8");
+            displayValue = display.textContent;
+            break;
+        case "9":
+            display.textContent = parseFloat(displayValue + "9");
+            displayValue = display.textContent;
+            break;
+        case "0":
+            display.textContent = parseFloat(displayValue + "0");
+            displayValue = display.textContent;
+            break;
+        case "+":
+            if (!previousValue) {
+                operator = "+";
+                displayValue = display.textContent;
+                previousValue = displayValue;
+                displayValue = 0;
+            } else {
+                displayValue = display.textContent;
+                currentValue = equals(operator, previousValue, displayValue);
+                display.textContent = currentValue;
+                previousValue = currentValue;
+                operator = "+";
+                currentValue = 0;
+                displayValue = 0;
+            };
+            console.log('previousValue: ' + previousValue);
+            console.log('displayValue: ' + displayValue);
+            console.log('currentValue: ' + currentValue);
+            break;
+        case "-":
+            if (!previousValue) {
+                operator = "-";
+                displayValue = display.textContent;
+                previousValue = displayValue;
+                displayValue = 0;
+            } else {
+                displayValue = display.textContent;
+                currentValue = equals(operator, previousValue, displayValue);
+                display.textContent = currentValue;
+                previousValue = currentValue;
+                operator = "-";
+                currentValue = 0;
+                displayValue = 0;
+            };
+            console.log('previousValue: ' + previousValue);
+            console.log('displayValue: ' + displayValue);
+            console.log('currentValue: ' + currentValue);
+            break;
+        case "*":
+            if (!previousValue) {
+                operator = "*";
+                displayValue = display.textContent;
+                previousValue = displayValue;
+                displayValue = 0;
+            } else {
+                displayValue = display.textContent;
+                currentValue = equals(operator, previousValue, displayValue);
+                display.textContent = currentValue;
+                previousValue = currentValue;
+                operator = "*";
+                currentValue = 0;
+                displayValue = 0;
+            };
+            console.log('previousValue: ' + previousValue);
+            console.log('displayValue: ' + displayValue);
+            console.log('currentValue: ' + currentValue);
+            break;
+        case "/":
+            if (!previousValue) {
+                operator = "/";
+                displayValue = display.textContent;
+                previousValue = displayValue;
+                displayValue = 0;
+            } else {
+                displayValue = display.textContent;
+                currentValue = equals(operator, previousValue, displayValue);
+                display.textContent = currentValue;
+                previousValue = currentValue;
+                operator = "/";
+                currentValue = 0;
+                displayValue = 0;
+            };
+            console.log('previousValue: ' + previousValue);
+            console.log('displayValue: ' + displayValue);
+            console.log('currentValue: ' + currentValue);
+            break;
+        case "Enter":
+            if (!operator) {
+                return;
+            } else {
+                displayValue = display.textContent;
+                currentValue = equals(operator, previousValue, displayValue);
+                display.textContent = currentValue;
+
+                // reset previous value, current value, display value, and operator
+                previousValue = 0;
+                currentValue = 0;
+                displayValue = 0;
+                operator = '';
+
+                // console log to see what's going on
+                console.log('previousValue: ' + previousValue);
+                console.log('displayValue: ' + displayValue);
+                console.log('currentValue: ' + currentValue);
+            }
+            break;
+        case ".":
+            display.textContent = display.textContent + '.';
+            displayValue = display.textContent;
+            break;
+        case "Backspace":
+            displayValue = display.textContent.slice(0, display.textContent.length - 1);
+            display.textContent = displayValue;
+            break;
+        case "Escape":
+            display.textContent = 0;
+            displayValue = 0;
+            previousValue = 0;
+            currentValue = 0;
+            operator = '';
+            break;
+        default:
+            console.log('keydown did not work');
+    }
 });
